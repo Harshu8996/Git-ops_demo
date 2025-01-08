@@ -5,5 +5,13 @@ jobs:
      first_job:
               runs_on: windows_latest
               steps:
-              name: welcome to my workflow
-              run: Echo"Welcome"
+      
+              name: checkout repository
+              uses: actions/checkout@v4
+
+              name: list files
+              run: ls
+
+              name: read files
+              run: cat hello.txt
+
