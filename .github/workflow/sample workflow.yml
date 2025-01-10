@@ -6,8 +6,8 @@ jobs:
               runs_on: windows_latest
               steps:
       
-              name: checkout repository
-              uses: actions/checkout@v4
+              name: checkout repository      //need to checkout repo
+              uses: actions/checkout@v4      //using action marketplace
 
               name: list files
               run: ls

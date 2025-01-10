@@ -1,0 +1,20 @@
+name: Artwork workflow
+
+on: push
+jobs:
+     first_job:
+              runs_on: ubuntu_latest
+              steps:
+      
+              name: Install cowsay
+              run: sudo apt install cowsay -y
+
+
+              name: Generate ASCII Artwork
+              run: cowsay  -f dragon "Run for me....I am dragon who breaths fire".>> dragon.txt
+
+              name: test file
+              run: grep -i "dragon" dragon.txt
+
+              name: cat Dragon file
+              run: cat dragon.txt
