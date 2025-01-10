@@ -18,3 +18,33 @@ jobs:
 
               name: cat Dragon file
               run: cat dragon.txt
+              name: upload dragon file          // need to use action upload
+              usage: actions/upload-artifact@v4
+          with:
+             name: upload_dragon
+             path: dragon.txt
+
+     second job:
+       need: first job                    //its depend to perform sequential manner otherwise go parallely
+       runs on: ubuntu_lataest           //It can be differnent as per job
+     steps:
+       name: download a dragon
+       usage: actions/download-artifact@v4  // same as upload need to use download
+       with:
+          name: upload_dragon
+       name: sample step from second job
+       run: grep -i "dragon" dragon.txt
+
+
+     Third job:
+       need: Second job                    //its depend to perform sequential manner otherwise go parallely
+       runs on: ubuntu_lataest           //It can be differnent as per job
+       steps:
+       name: download a dragon
+       usage: actions/download-artifact@v4  // same as upload need to use download
+       with:
+          name: upload_dragon
+       name: sample step from third job
+       run: cat dragon.txt
+
+
